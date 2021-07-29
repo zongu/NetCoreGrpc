@@ -1,0 +1,18 @@
+﻿// protobuf版本
+syntax = "proto3";
+
+// protobuf分類
+package netcoregrpc.model;
+
+// C#裡的命名空間
+option csharp_namespace="NetCoreGrpc.Model";
+
+// 會員結構
+message Member{
+	// 會員ID
+	string MemberId=1;
+	// 會員暱稱
+	string NickName=2;
+	// 資料建立時間
+	int64 CreateDateTimeStamp=3;
+}
