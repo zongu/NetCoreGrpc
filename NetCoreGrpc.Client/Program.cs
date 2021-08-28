@@ -4,6 +4,7 @@ namespace NetCoreGrpc.Client
     using System;
     using System.Text.Json;
     using Autofac;
+    using Google.Protobuf.WellKnownTypes;
     using NetCoreGrpc.Client.Applibs;
     using NetCoreGrpc.Domain.Model;
     using NetCoreGrpc.Model;
@@ -38,7 +39,7 @@ namespace NetCoreGrpc.Client
                                 break;
                             case "2":
                                 var getResult = client.GetAll(
-                                    new GetAllRequest(),
+                                    new Empty(),
                                     // timeout 要用UTC時間
                                     deadline: DateTime.UtcNow.AddSeconds(3));
 

@@ -5,6 +5,7 @@ syntax = "proto3";
 package netcoregrpc.service;
 
 // 引用參考protobuf對象
+import "google/protobuf/empty.proto";
 import "Protos/member.proto";
 
 // C#裡的命名空間
@@ -13,13 +14,10 @@ option csharp_namespace="NetCoreGrpc.Service";
 // grpc服務類
 service MemberService{
     // 取所有會員資料
-    rpc GetAll(GetAllRequest) returns(GetAllResponse);
+    rpc GetAll(google.protobuf.Empty) returns(GetAllResponse);
     // 新增會員資料
     rpc Insert(netcoregrpc.model.Member) returns(netcoregrpc.model.Member);
 }
-
-// GetAll方法request，gRPC請求一定要帶一個參數，先給空的
-message GetAllRequest{}
 
 // GetAll回傳結果
 message GetAllResponse{

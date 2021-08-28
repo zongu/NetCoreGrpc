@@ -3,6 +3,7 @@ namespace NetCoreGrpc.Server.Services
 {
     using System;
     using System.Threading.Tasks;
+    using Google.Protobuf.WellKnownTypes;
     using Grpc.Core;
     using Microsoft.Extensions.Logging;
     using NetCoreGrpc.Domain.Repository;
@@ -30,7 +31,7 @@ namespace NetCoreGrpc.Server.Services
         /// <param name="request"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public override Task<GetAllResponse> GetAll(GetAllRequest request, ServerCallContext context)
+        public override Task<GetAllResponse> GetAll(Empty request, ServerCallContext context)
         {
             this.logger.LogTrace($"{this.GetType().Name} GetAll");
 
