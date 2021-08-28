@@ -1,0 +1,30 @@
+// protobuf版本
+syntax = "proto3";
+
+// protobuf分類
+package netcoregrpc.service;
+
+// 引用參考protobuf對象
+import "google/protobuf/empty.proto";
+import "Protos/chatMessage.proto";
+
+// C#裡的命名空間
+option csharp_namespace="NetCoreGrpc.Service";
+
+// grpc服務類
+service ChatMessageService{
+    // 聊天
+    rpc Chat(stream ChatReauest) returns(streaam ChatResponse);
+    // 新增會員資料
+    rpc Insert(netcoregrpc.model.Member) returns(netcoregrpc.model.Member);
+}
+
+// Chat內容
+message ChatReauest{
+    repeated netcoregrpc.model.ChatMessage ChatMessages=1;
+}
+
+// Chat回傳內容
+message ChatResponse{
+    repeated netcoregrpc.model.ChatMessage ChatMessages=1;
+}
