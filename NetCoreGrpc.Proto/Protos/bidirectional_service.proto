@@ -1,0 +1,21 @@
+// protobuf版本
+syntax = "proto3";
+
+// protobuf分類
+package netcoregrpc.service;
+
+// C#裡的命名空間
+option csharp_namespace="NetCoreGrpc.Service";
+
+// grpc服務類
+service BidirectionalService{
+    // 異步請求
+    rpc ActionAsync(stream ActionModel) returns(stream ActionModel);
+}
+
+message ActionModel{
+    // 指令名稱
+    string Action=1;
+    // 指令內容
+    string Content=2;
+}
