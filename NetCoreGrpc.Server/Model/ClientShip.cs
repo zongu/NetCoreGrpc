@@ -4,11 +4,11 @@ namespace NetCoreGrpc.Server.Model
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text.Json;
     using System.Threading.Tasks;
     using Grpc.Core;
     using Microsoft.Extensions.Logging;
     using NetCoreGrpc.Service;
+    using Newtonsoft.Json;
 
     public class ClientShip : IClientShip
     {
@@ -38,12 +38,12 @@ namespace NetCoreGrpc.Server.Model
                             obj.Value.WriteAsync(new ActionModel()
                             {
                                 Action = action.GetType().Name,
-                                Content = JsonSerializer.Serialize(action)
+                                Content = JsonConvert.SerializeObject(action)
                             });
                         }
                         catch (Exception ex)
                         {
-                            this.logger.LogError(ex, $"{this.GetType().Name} Broadcast exception id:{obj.Key}, content:{JsonSerializer.Serialize(action)}");
+                            this.logger.LogError(ex, $"{this.GetType().Name} Broadcast exception id:{obj.Key}, content:{JsonConvert.SerializeObject(action)}");
                         }
                     });
                 }).ToArray();

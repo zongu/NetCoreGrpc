@@ -29,6 +29,10 @@ namespace NetCoreGrpc.Client.Applibs
                 .WithParameter("channel", GrpcChannelService.GrpcChannel)
                 .SingleInstance();
 
+            builder.RegisterType<BidirectionalService.BidirectionalServiceClient>()
+                .WithParameter("channel", GrpcChannelService.GrpcChannel)
+                .SingleInstance();
+
             container = builder.Build();
         }
     }

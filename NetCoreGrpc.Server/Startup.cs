@@ -43,7 +43,7 @@ namespace NetCoreGrpc.Server
             // 指定處理client指令的handler
             builder.RegisterAssemblyTypes(asm)
                 .Where(t => t.IsAssignableTo<IActionHandler>())
-                .Named<IActionHandler>(t => t.Name.Replace("ActionHandler", string.Empty).ToLower())
+                .Named<IActionHandler>(t => t.Name.Replace("Handler", string.Empty).ToLower())
                 .PropertiesAutowired(PropertyWiringOptions.AllowCircularDependencies)
                 .SingleInstance();
 
