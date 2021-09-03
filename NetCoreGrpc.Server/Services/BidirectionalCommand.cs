@@ -48,9 +48,13 @@ namespace NetCoreGrpc.Server.Services
                 catch (Exception ex)
                 {
                     this.logger.LogError(ex, $"{this.GetType().Name} ActionAsync Exception");
+                    // client 斷線
                     this.clientShip.TryRemove(id);
                 }
             });
+
+            // client 結束通訊
+            this.clientShip.TryRemove(id);
         }
     }
 }

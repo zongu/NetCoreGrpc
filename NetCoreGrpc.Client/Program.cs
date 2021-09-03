@@ -84,6 +84,9 @@ namespace NetCoreGrpc.Client
                                     SpinWait.SpinUntil(() => false, 1000);
                                 }
 
+                                // 停止連線
+                                vidrectional.RequestStream.CompleteAsync().Wait();
+
                                 break;
                             default:
                                 break;
